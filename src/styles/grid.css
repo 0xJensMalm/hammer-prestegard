@@ -1,23 +1,93 @@
 /* src/styles/grid.css */
-.grid-container {
+
+/* Common grid styles */
+.collective-grid,
+.art-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-width), 1fr));
-    gap: var(--grid-gap);
-    padding: var(--grid-padding);
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.grid-item {
-    aspect-ratio: 1;
-    background-color: var(--grid-item-bg);
+/* Collective grid specific */
+.collective-grid {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.collective-item {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.collective-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: transparent;
+    mix-blend-mode: multiply;
+}
+
+/* Art grid specific */
+.art-grid {
+    grid-template-columns: repeat(4, 1fr);  /* 4 columns for art */
+    gap: 1.5rem;  /* Slightly larger gap for artwork */
+}
+
+.art-item {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    cursor: pointer;
+}
+
+.art-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: transparent;
+    mix-blend-mode: multiply;
     transition: transform 0.3s ease;
 }
 
-.grid-item:hover {
-    transform: scale(1.02);
+.art-item:hover .art-image {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .art-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    .collective-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .art-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collective-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .art-grid {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

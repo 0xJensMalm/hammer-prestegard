@@ -3,9 +3,9 @@ export const initializeRouter = () => {
   const contentContainer = document.querySelector(".content");
 
   const routes = {
-    "#kunst": () => renderGrid("art"),
+    "#kunst": () => renderArtGrid(),
     "#arrangementer": () => renderBlog(),
-    "#kollektivet": () => renderGrid("collective"),
+    "#kollektivet": () => renderCollectiveGrid(),
     "#prestegarden": () => renderTimeline(),
   };
 
@@ -22,18 +22,46 @@ export const initializeRouter = () => {
     }
   }
 
-  function renderGrid(type) {
-    const gridItems = type === "art" ? 12 : 6; // Different number of items for art vs collective
+  function renderCollectiveGrid() {
+    const gridItems = Array.from(
+      { length: 14 },
+      () => `
+            <div class="collective-item">
+                <img 
+                    src="./assets/images/kollektivet/1.png" 
+                    alt="Collective member"
+                    class="collective-image"
+                />
+            </div>
+        `
+    ).join("");
+
     contentContainer.innerHTML = `
-            <div class="grid-container">
-                ${Array(gridItems)
-                  .fill(0)
-                  .map(
-                    () => `
-                    <div class="grid-item"></div>
-                `
-                  )
-                  .join("")}
+            <div class="collective-grid">
+                ${gridItems}
+            </div>
+        `;
+  }
+
+  function renderArtGrid() {
+    // Create grid items with both thumbnail and full-size image paths
+    const gridItems = Array.from(
+      { length: 12 },
+      () => `
+            <div class="art-item">
+                <img 
+                    src="./assets/thumbnails/art/art_placeholder.png"
+                    data-full="./assets/images/art/art_placeholder.png" 
+                    alt="Artwork"
+                    class="art-image"
+                />
+            </div>
+        `
+    ).join("");
+
+    contentContainer.innerHTML = `
+            <div class="art-grid">
+                ${gridItems}
             </div>
         `;
   }
@@ -46,8 +74,8 @@ export const initializeRouter = () => {
                   .map(
                     () => `
                     <article class="blog-post">
-                        <h2>Post Title</h2>
-                        <p>Post content goes here...</p>
+                        <h2>Julekonsert</h2>
+                        <p>Innhold...</p>
                     </article>
                 `
                   )
