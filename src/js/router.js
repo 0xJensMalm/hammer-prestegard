@@ -88,8 +88,8 @@ export const initializeRouter = () => {
     contentContainer.innerHTML = `
             <div class="timeline-container">
                 <div class="timeline-placeholder">
-                    <h2>Interactive Timeline</h2>
-                    <p>Coming soon...</p>
+                    <h2>Interaktiv tidslinje for prestegården</h2>
+                    <p>Kommer snart...?</p>
                 </div>
             </div>
         `;
