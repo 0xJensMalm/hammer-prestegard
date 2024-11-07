@@ -7,13 +7,13 @@
     display: flex;
     align-items: center;
     background-color: var(--navbar-bg);
-    position: relative; /* For absolute positioning of social icons */
+    position: relative;
 }
 
 .navbar-brand {
     font-size: 1.2rem;
     font-weight: bold;
-    width: 200px; /* Fixed width to match social icons container */
+    width: 200px;
 }
 
 .navbar-links {
@@ -31,6 +31,7 @@
     padding-bottom: 4px;
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .navbar-links a.active {
@@ -38,7 +39,7 @@
 }
 
 .social-icons {
-    width: 200px; /* Fixed width to match brand container */
+    width: 200px;
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
@@ -58,27 +59,71 @@
     .navbar {
         flex-direction: column;
         height: auto;
-        padding: 1rem;
+        padding: 0.75rem var(--side-padding);
+        gap: 0.75rem;
     }
 
     .navbar-brand {
         width: 100%;
         text-align: center;
-        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        margin: 0;
     }
 
     .navbar-links {
         position: static;
         transform: none;
-        flex-direction: column;
-        align-items: center;
+        width: 100%;
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: center;
         gap: 1rem;
-        margin: 1rem 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        white-space: nowrap;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .navbar-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .navbar-links a {
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
     }
 
     .social-icons {
         width: 100%;
         justify-content: center;
-        margin-top: 1rem;
+        padding: 0.25rem 0;
+    }
+
+    /* Adjust for very small screens */
+    @media (max-width: 360px) {
+        .navbar-links {
+            gap: 0.75rem;
+        }
+        
+        .navbar-links a {
+            font-size: 0.85rem;
+        }
+        
+        .social-icons svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+/* For medium-sized screens where sections might get cramped */
+@media (max-width: 480px) {
+    .navbar-links {
+        padding: 0.5rem 1rem;
+        justify-content: flex-start; /* Start from left when scrolling */
     }
 }
