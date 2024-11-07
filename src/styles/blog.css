@@ -1,0 +1,12 @@
+/* src/styles/blog.css */
+.blog-container {
+    max-width: var(--blog-max-width);
+    margin: 0 auto;
+    padding: var(--blog-padding);
+}
+
+.blog-post {
+    margin-bottom: var(--blog-post-margin);
+    padding: var(--blog-post-padding);
+    background-color: var(--blog-post-bg);
+}

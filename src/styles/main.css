@@ -1,0 +1,72 @@
+/* src/styles/main.css */
+@import 'config.css';
+@import 'navbar.css';
+@import 'grid.css';
+@import 'blog.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+.content {
+    padding: var(--content-padding);
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+/* src/styles/navbar.css */
+.navbar {
+    width: 100%;
+    height: var(--navbar-height);
+    padding: 0 var(--side-padding);
+    border-bottom: var(--border-width) solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--navbar-bg);
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+}

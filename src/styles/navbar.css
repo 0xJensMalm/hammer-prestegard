@@ -1,0 +1,84 @@
+/* src/styles/navbar.css */
+.navbar {
+    width: 100%;
+    height: var(--navbar-height);
+    padding: 0 var(--side-padding);
+    border-bottom: var(--border-width) solid var(--border-color);
+    display: flex;
+    align-items: center;
+    background-color: var(--navbar-bg);
+    position: relative; /* For absolute positioning of social icons */
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 200px; /* Fixed width to match social icons container */
+}
+
+.navbar-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.navbar-links a.active {
+    border-bottom: 2px solid var(--text-color);
+}
+
+.social-icons {
+    width: 200px; /* Fixed width to match brand container */
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.social-icons svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .navbar-brand {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .navbar-links {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .social-icons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}

@@ -1,0 +1,34 @@
+/* src/styles/config.css */
+:root {
+    /* Colors */
+    --background-color: #fef8e9;
+    --text-color: #333;
+    --accent-color: #666;
+    --navbar-bg: #fef8e9;
+    --border-color: #000;
+    --grid-item-bg: #ffffff;
+    --blog-post-bg: #ffffff;
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* Layout */
+    --navbar-height: 60px;
+    --side-padding: 2rem;
+    --content-padding: 2rem;
+    --content-max-width: 1200px;
+    
+    /* Borders */
+    --border-width: 1px;
+    
+    /* Grid Settings */
+    --grid-min-width: 250px;
+    --grid-gap: 1.5rem;
+    --grid-padding: 1rem;
+    
+    /* Blog Settings */
+    --blog-max-width: 800px;
+    --blog-padding: 2rem;
+    --blog-post-margin: 2rem;
+    --blog-post-padding: 1.5rem;
+}

@@ -1,0 +1,23 @@
+/* src/styles/grid.css */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-width), 1fr));
+    gap: var(--grid-gap);
+    padding: var(--grid-padding);
+}
+
+.grid-item {
+    aspect-ratio: 1;
+    background-color: var(--grid-item-bg);
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
