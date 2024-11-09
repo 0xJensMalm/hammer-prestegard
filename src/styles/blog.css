@@ -1,12 +1,123 @@
 /* src/styles/blog.css */
-.blog-container {
+
+.blog-container,
+.history-container {
     max-width: var(--blog-max-width);
     margin: 0 auto;
-    padding: var(--blog-padding);
+    padding: 2rem;
+}
+
+.history-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-color);
 }
 
 .blog-post {
-    margin-bottom: var(--blog-post-margin);
-    padding: var(--blog-post-padding);
-    background-color: var(--blog-post-bg);
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Period styling - more prominent */
+.blog-post .period {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+/* Title styling - more subtle */
+.blog-post h2 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Content styling - better readability */
+.blog-post .content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+/* Add paragraph indentation and spacing */
+.blog-post .content p {
+    text-indent: 2em;
+    margin-bottom: 1rem;
+}
+
+/* First paragraph no indent */
+.blog-post .content p:first-of-type {
+    text-indent: 0;
+}
+
+/* Last paragraph no margin */
+.blog-post .content p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Add a decorative element */
+.blog-post::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--accent-color);
+    border-radius: 4px 0 0 4px;
+    opacity: 0.3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .history-container {
+        padding: 1.5rem;
+    }
+
+    .history-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .blog-post {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .blog-post .period {
+        font-size: 1.75rem;
+    }
+
+    .blog-post h2 {
+        font-size: 1.1rem;
+    }
+
+    .blog-post .content {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .history-container {
+        padding: 1rem;
+    }
+
+    .blog-post {
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-post .content p {
+        text-indent: 1.5em;
+    }
 }

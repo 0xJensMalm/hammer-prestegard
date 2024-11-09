@@ -1,4 +1,6 @@
 // src/js/router.js
+import { generateHistoryPosts } from "./history.js";
+
 export const initializeRouter = () => {
   const contentContainer = document.querySelector(".content");
 
@@ -6,7 +8,7 @@ export const initializeRouter = () => {
     "#kunst": () => renderArtGrid(),
     "#arrangementer": () => renderBlog(),
     "#kollektivet": () => renderCollectiveGrid(),
-    "#prestegarden": () => renderTimeline(),
+    "#prestegarden": () => renderHistory(),
   };
 
   function updateActiveLink(hash) {
@@ -26,14 +28,14 @@ export const initializeRouter = () => {
     const gridItems = Array.from(
       { length: 14 },
       () => `
-            <div class="collective-item">
-                <img 
-                    src="./assets/images/kollektivet/1.png" 
-                    alt="Collective member"
-                    class="collective-image"
-                />
-            </div>
-        `
+                <div class="collective-item">
+                    <img 
+                        src="./assets/images/kollektivet/1.png" 
+                        alt="Collective member"
+                        class="collective-image"
+                    />
+                </div>
+            `
     ).join("");
 
     contentContainer.innerHTML = `
@@ -44,19 +46,18 @@ export const initializeRouter = () => {
   }
 
   function renderArtGrid() {
-    // Create grid items with both thumbnail and full-size image paths
     const gridItems = Array.from(
       { length: 12 },
       () => `
-            <div class="art-item">
-                <img 
-                    src="./assets/thumbnails/art/art_placeholder.png"
-                    data-full="./assets/images/art/art_placeholder.png" 
-                    alt="Artwork"
-                    class="art-image"
-                />
-            </div>
-        `
+                <div class="art-item">
+                    <img 
+                        src="./assets/thumbnails/art/art_placeholder.png"
+                        data-full="./assets/images/art/art_placeholder.png" 
+                        alt="Artwork"
+                        class="art-image"
+                    />
+                </div>
+            `
     ).join("");
 
     contentContainer.innerHTML = `
@@ -73,24 +74,22 @@ export const initializeRouter = () => {
                   .fill(0)
                   .map(
                     () => `
-                    <article class="blog-post">
-                        <h2>Julekonsert</h2>
-                        <p>Innhold...</p>
-                    </article>
-                `
+                        <article class="blog-post">
+                            <h2>Julekonsert</h2>
+                            <p>Innhold...</p>
+                        </article>
+                    `
                   )
                   .join("")}
             </div>
         `;
   }
 
-  function renderTimeline() {
+  function renderHistory() {
     contentContainer.innerHTML = `
-            <div class="timeline-container">
-                <div class="timeline-placeholder">
-                    <h2>Interaktiv tidslinje for prestegården</h2>
-                    <p>Kommer snart...?</p>
-                </div>
+            <div class="history-container">
+                <h1 class="history-title">Prestegårdens Historie</h1>
+                ${generateHistoryPosts()}
             </div>
         `;
   }

@@ -1,0 +1,11 @@
+.history-container {
+    max-width: var(--blog-max-width);
+    margin: 0 auto;
+    padding: var(--blog-padding);
+}
+
+.history-title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
+}
