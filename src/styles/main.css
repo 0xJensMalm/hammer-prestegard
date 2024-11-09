@@ -3,6 +3,7 @@
 @import 'navbar.css';
 @import 'grid.css';
 @import 'blog.css';
+@import 'contact.css';
 
 * {
     margin: 0;
@@ -56,11 +57,29 @@ body {
     color: var(--accent-color);
 }
 
+.landing-container {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.landing-container h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
         height: auto;
         padding: 1rem;
+    }
+    .landing-container h1 {
+        font-size: 2rem;
     }
 
     .navbar-links {

@@ -1,14 +1,28 @@
 // src/js/router.js
 import { generateHistoryPosts } from "./history.js";
+import { generateContactPage } from "./contact.js";
 
 export const initializeRouter = () => {
   const contentContainer = document.querySelector(".content");
+  const navbarBrand = document.querySelector(".navbar-brand");
+
+  // Add click event to the title
+  navbarBrand.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.hash = "";
+    renderLanding();
+  });
+
+  // Make title act as a link
+  navbarBrand.style.cursor = "pointer";
 
   const routes = {
+    "": () => renderLanding(), // Default route
     "#kunst": () => renderArtGrid(),
     "#arrangementer": () => renderBlog(),
     "#kollektivet": () => renderCollectiveGrid(),
     "#prestegarden": () => renderHistory(),
+    "#kontakt": () => renderContact(),
   };
 
   function updateActiveLink(hash) {
@@ -22,6 +36,14 @@ export const initializeRouter = () => {
     if (activeLink) {
       activeLink.classList.add("active");
     }
+  }
+
+  function renderLanding() {
+    contentContainer.innerHTML = `
+          <div class="landing-container">
+              <h1>Velkommen til Hammer Prestegård</h1>
+          </div>
+      `;
   }
 
   function renderCollectiveGrid() {
@@ -94,16 +116,24 @@ export const initializeRouter = () => {
         `;
   }
 
+  function renderContact() {
+    contentContainer.innerHTML = generateContactPage();
+  }
+
   // Handle navigation
   window.addEventListener("hashchange", () => {
-    const hash = window.location.hash || "#kunst";
-    const render = routes[hash] || routes["#kunst"];
+    const hash = window.location.hash;
+    const render = routes[hash] || routes[""];
     updateActiveLink(hash);
     render();
   });
 
   // Initial render
-  const initialHash = window.location.hash || "#kunst";
-  updateActiveLink(initialHash);
-  routes[initialHash]();
+  const initialHash = window.location.hash;
+  if (initialHash) {
+    updateActiveLink(initialHash);
+    routes[initialHash]();
+  } else {
+    renderLanding();
+  }
 };
